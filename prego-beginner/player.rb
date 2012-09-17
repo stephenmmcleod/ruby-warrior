@@ -6,7 +6,11 @@ class Player
       if warrior.health < 20 && (@health != nil && warrior.health >= @health)
         warrior.rest!
       else
-        warrior.walk!
+        if warrior.feel.captive?
+          warrior.rescue!
+        else
+          warrior.walk!
+        end
       end
     end    
     @health = warrior.health
